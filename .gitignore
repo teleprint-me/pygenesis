@@ -1,3 +1,16 @@
+# local
+*.db
+*.sqlite
+*.sqlite3
+/scripts
+
+# local models
+models/*.h5
+!models/genesis-xor.h5
+
+# local prompts
+docs/prompts
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
