@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "pygenesis"
+name = "TMNN"
 version = "0.0.1"
-description = "PyGenesis: A Python library for building and experimenting with custom neural networks from scratch."
+description = "TMNN: A Python library for building and experimenting with custom neural networks from scratch."
 authors = ["Austin Berrio <aberrio@teleprint.me>"]
 license = "GPLv3"
 readme = "README.md"
