@@ -1,12 +1,12 @@
 """
-pygenesis/layers/dense.py
+tmnn/layers/dense.py
 
 This module defines the Dense layer class for neural networks.
 """
 
 import numpy as np
 
-from pygenesis.layers.base import Layer
+from tmnn.layers.base import Layer
 
 
 class Dense(Layer):

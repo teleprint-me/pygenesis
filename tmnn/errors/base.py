@@ -1,5 +1,5 @@
 """
-pygenesis/errors/base.py
+tmnn/errors/base.py
 
 This module defines the base class for all loss functions used in neural networks.
 """

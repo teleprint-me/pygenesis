@@ -26,7 +26,7 @@
 ### Suggested Directory Additions:
 
 ```sh
-pygenesis
+tmnn
 ├── ...
 ├── utils
 │   ├── __init__.py

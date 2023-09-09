@@ -1,11 +1,11 @@
 """
-pygenesis/activations/tanh.py
+tmnn/activations/tanh.py
 
 This module defines the Tanh activation layer class for neural networks.
 """
 import numpy as np
 
-from pygenesis.activations.base import Activation
+from tmnn.activations.base import Activation
 
 
 class Tanh(Activation):

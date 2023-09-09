@@ -1,11 +1,11 @@
 """
-pygenesis/activations/relu.py
+tmnn/activations/relu.py
 
 This module defines the ReLU activation layer class for neural networks.
 """
 import numpy as np
 
-from pygenesis.activations.base import Activation
+from tmnn.activations.base import Activation
 
 
 class ReLU(Activation):

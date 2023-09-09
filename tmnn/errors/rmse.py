@@ -1,11 +1,11 @@
 """
-pygenesis/errors/rmse.py
+tmnn/errors/rmse.py
 
 This module defines the Root Mean Squared Error (RMSE) loss function.
 """
 import numpy as np
 
-from pygenesis.errors.base import LossFunction
+from tmnn.errors.base import LossFunction
 
 
 class RMSE(LossFunction):

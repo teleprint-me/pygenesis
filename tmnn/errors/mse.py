@@ -1,11 +1,11 @@
 """
-pygenesis/errors/mse.py
+tmnn/errors/mse.py
 
 This module defines the Mean Squared Error (MSE) loss function.
 """
 import numpy as np
 
-from pygenesis.errors.base import LossFunction
+from tmnn.errors.base import LossFunction
 
 
 class MSE(LossFunction):

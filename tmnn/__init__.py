@@ -1,7 +1,7 @@
 """
-pygenesis/__init__.py
+tmnn/__init__.py
 
-PyGenesis: A Python library for building and experimenting with custom neural networks from scratch
+tmnn: A Python library for building and experimenting with custom neural networks from scratch
 Copyright (C) 2023  Austin Berrio
 
 This program is free software: you can redistribute it and/or modify
@@ -23,9 +23,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import logging
 
 __version__ = "0.0.1"
-__name__ = "pygenesis"
-__agent__ = "teleprint-me/pygenesis"
-__source__ = "https://github.com/teleprint-me/pygenesis"
+__name__ = "tmnn"
+__agent__ = "teleprint-me/tmnn"
+__source__ = "https://github.com/teleprint-me/tmnn"
 __author__ = "Austin Berrio"
 __email__ = "aberrio@teleprint.me"
 

@@ -1,4 +1,4 @@
-# PyGenesis Project Structure
+# tmnn Project Structure
 
 ## Proposed Structure Guideline
 
@@ -6,7 +6,7 @@ The main idea is to categorize by functionality and keep related modules
 together.
 
 ```sh
-pygenesis
+tmnn
 ├── __init__.py
 ├── layers  # new
 │   ├── __init__.py
@@ -60,7 +60,7 @@ techniques like LoRA, QLoRA, and RoPE, consider building a structure that's both
 modular and extensible.
 
 ```sh
-pygenesis
+tmnn
 ├── __init__.py
 ├── layers
 │   ├── __init__.py
@@ -121,7 +121,7 @@ layers or models as you expand your project.
 ## Extended Revised Project Structure Guideline
 
 ```sh
-pygenesis
+tmnn
 ├── __init__.py
 ├── layers
 │   ├── __init__.py

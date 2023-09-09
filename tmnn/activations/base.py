@@ -1,11 +1,11 @@
 """
-pygenesis/activations/base.py
+tmnn/activations/base.py
 
 This module defines the base Activation layer class for neural networks.
 """
 import numpy as np
 
-from pygenesis.model.layer import Layer
+from tmnn.model.layer import Layer
 
 
 class Activation(Layer):

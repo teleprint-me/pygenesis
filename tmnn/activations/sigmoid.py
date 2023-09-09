@@ -1,12 +1,12 @@
 """
-pygenesis/activations/sigmoid.py
+tmnn/activations/sigmoid.py
 
 This module defines the Sigmoid activation layer class for neural networks.
 """
 
 import numpy as np
 
-from pygenesis.activations.base import Activation
+from tmnn.activations.base import Activation
 
 
 class Sigmoid(Activation):

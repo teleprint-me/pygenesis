@@ -1,11 +1,11 @@
 """
-pygenesis/errors/ce.py
+tmnn/errors/ce.py
 
 This module defines the Cross-Entropy (CE) loss function.
 """
 import numpy as np
 
-from pygenesis.errors.base import LossFunction
+from tmnn.errors.base import LossFunction
 
 
 class CrossEntropy(LossFunction):

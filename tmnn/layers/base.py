@@ -1,5 +1,5 @@
 """
-pygenesis/layers/base.py
+tmnn/layers/base.py
 
 This module defines the base layer class for neural network layers.
 """
