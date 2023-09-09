@@ -1,7 +1,7 @@
 """
 tmnn/__init__.py
 
-tmnn: A Python library for building and experimenting with custom neural networks from scratch
+TMNN: A Python library for building and experimenting with custom neural networks from scratch
 Copyright (C) 2023  Austin Berrio
 
 This program is free software: you can redistribute it and/or modify
