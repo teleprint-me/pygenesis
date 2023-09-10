@@ -3,29 +3,21 @@ tmnn/layers/base.py
 
 This module defines the base layer class for neural network layers.
 """
-from abc import ABC, abstractmethod
+from typing import Protocol
+
+import numpy as np
 
 
-class Layer(ABC):
+class Layer(Protocol):
     """
-    Abstract base class for neural network layers.
+    Protocol for neural network layers.
 
     Attributes:
-        None
-
-    Methods:
-        __init__(): Constructor method.
-        forward(input_data): Forward pass through the layer.
-        backward(output_gradient, learning_rate): Backward pass for gradient computation.
+        dtype (numpy.dtype): The data type used for internal computations.
     """
 
-    def __init__(self):
-        """
-        Initializes the Layer instance.
-        """
-        ...
+    dtype: np.dtype
 
-    @abstractmethod
     def forward(self, input_data):
         """
         Perform a forward pass through the layer.
@@ -34,20 +26,19 @@ class Layer(ABC):
             input_data: The input data to the layer.
 
         Returns:
-            Output data after applying the layer's transformation.
+            The output data produced by the layer.
         """
         ...
 
-    @abstractmethod
     def backward(self, output_gradient, learning_rate):
         """
-        Perform a backward pass through the layer for gradient computation.
+        Perform a backward pass for gradient computation.
 
         Args:
             output_gradient: The gradient of the loss with respect to the layer's output.
-            learning_rate: The learning rate for gradient descent.
+            learning_rate: The learning rate used for gradient descent.
 
         Returns:
-            The gradient of the loss with respect to the layer's input data.
+            The gradient of the loss with respect to the layer's input.
         """
         ...
