@@ -12,59 +12,51 @@ from tmnn.layers.base import Layer
 class Dense(Layer):
     """
     Dense layer for neural networks.
-
-    Attributes:
-        input_dim (int): The input dimension of the layer.
-        output_dim (int): The output dimension of the layer.
-        activation_fn (str, optional): The activation function used by the layer. Default is None.
-        seed (int, optional): Random seed for weight initialization. Default is None.
-
-    Methods:
-        __init__(input_dim, output_dim, activation_fn=None, seed=None): Constructor method.
-        _initialize_weights(activation_fn): Initialize layer weights based on the activation function.
-        forward(input_data): Perform a forward pass through the layer.
-        backward(output_gradient, learning_rate, lambda_): Perform a backward pass through the layer for gradient computation.
-        get_params(): Get the current weights and biases of the layer.
-        set_params(weights, biases): Set the weights and biases of the layer.
     """
 
-    def __init__(self, input_dim, output_dim, activation_fn=None, seed=None):
+    def __init__(
+        self,
+        input_dim,
+        output_dim,
+        dtype=np.float32,
+        activation_fn=None,
+        seed=None,
+    ):
         """
         Initializes the Dense layer.
-
-        Args:
-            input_dim (int): The input dimension of the layer.
-            output_dim (int): The output dimension of the layer.
-            activation_fn (str, optional): The activation function used by the layer. Default is None.
-            seed (int, optional): Random seed for weight initialization. Default is None.
         """
         self.input_dim = input_dim
         self.output_dim = output_dim
+        self.activation = activation_fn
+        self.dtype = dtype
+        self.weights = None
+        self.biases
 
         if seed is not None:
             np.random.seed(seed)
 
-        self._initialize_weights(activation_fn)
-        self.biases = np.zeros((1, self.output_dim))
+        self._initialize_weights_and_biases()
 
-    def _initialize_weights(self, activation_fn):
+    def _initialize_weights_and_biases(self):
         """
         Initialize layer weights based on the activation function.
-
-        Args:
-            activation_fn (str): The activation function used by the layer.
         """
-        if activation_fn == "relu":  # He Initialization - Var(W) = 1/n
-            self.weights = np.random.randn(self.input_dim, self.output_dim) * np.sqrt(
-                2.0 / self.input_dim
+        # NOTE: Leave comments and notes! Do **NOT** remove them!
+        if self.activation_fn == "relu":
+            # NOTE: He Initialization - Var(W) = 1/n
+            self.weights = np.random.randn(
+                self.input_dim, self.output_dim, dtype=self.dtype
+            ) * np.sqrt(2.0 / self.input_dim)
+        elif self.activation_fn in ["tanh", "sigmoid"]:
+            # NOTE: Xavier/Glorot Initialization - Var(W) = 2/n
+            self.weights = np.random.randn(
+                self.input_dim, self.output_dim, dtype=self.dtype
+            ) * np.sqrt(1.0 / self.input_dim)
+        else:  # NOTE: Fallback to random initialization
+            self.weights = np.random.randn(
+                self.input_dim, self.output_dim, dtype=self.dtype
             )
-        elif activation_fn in ["tanh", "sigmoid"]:
-            # Xavier/Glorot Initialization - Var(W) = 2/n
-            self.weights = np.random.randn(self.input_dim, self.output_dim) * np.sqrt(
-                1.0 / self.input_dim
-            )
-        else:  # Fallback to random initialization
-            self.weights = np.random.randn(self.input_dim, self.output_dim)
+        self.biases = np.zeros((1, self.output_dim), dtype=self.dtype)
 
     def forward(self, input_data):
         """
@@ -97,26 +89,39 @@ class Dense(Layer):
 
         # Update parameters with regularization
         self.weights -= learning_rate * (weights_gradient + 2 * lambda_ * self.weights)
-        self.biases -= learning_rate * np.sum(output_gradient, axis=0, keepdims=True)
+        self.biases -= learning_rate * np.sum(
+            output_gradient,
+            axis=0,
+            keepdims=True,
+            dtype=self.dtype,
+        )
 
         return input_gradient
+
+    def get_dimensions(self):
+        return self.input_dim, self.output_dim
+
+    def get_state(self):
+        return self.input, self.output
 
     def get_params(self):
         """
         Get the current weights and biases of the layer.
 
         Returns:
-            tuple: A tuple containing the layer's current weights and biases.
+            tuple: A tuple containing the weights (numpy.ndarray), biases (numpy.ndarray), and data type (Defaults to np.float32).
         """
-        return self.weights, self.biases
+        return self.weights, self.biases, self.dtype
 
-    def set_params(self, weights, biases):
+    def set_params(self, weights, biases, dtype=np.float32):
         """
         Set the weights and biases of the layer.
 
         Args:
             weights (numpy.ndarray): The new weights for the layer.
             biases (numpy.ndarray): The new biases for the layer.
+            dtype (numpy.dtype, optional): The data type used for internal computations. Defaults to np.float32.
         """
         self.weights = weights
         self.biases = biases
+        self.dtype = dtype
