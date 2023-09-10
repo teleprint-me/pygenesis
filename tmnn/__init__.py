@@ -22,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import logging
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __name__ = "tmnn"
 __agent__ = "teleprint-me/tmnn"
 __source__ = "https://github.com/teleprint-me/tmnn"
