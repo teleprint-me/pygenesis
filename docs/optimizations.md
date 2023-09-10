@@ -9,6 +9,7 @@ performance out of the TMNN library.
 2. [Data Types: int8 and float16](#data-types-int8-and-float16)
 3. [Coming Soon: Advanced Optimization Techniques](#coming-soon-advanced-optimization-techniques)
 4. [Optimization Using Reduced-Precision and Parallelization](#optimization-using-reduced-precision-and-parallelization)
+5. [Using Sparse Layers for Optimization](#using-sparse-layers-for-optimization)
 
 ---
 
